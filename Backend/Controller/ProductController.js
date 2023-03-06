@@ -1,4 +1,4 @@
-const Product = require("../Models/Product.Model");
+const Product = require("../Models/ProductModel");
 const ErrorHandler = require("../Utils/ErrorHandler");
 const catchAsyncError = require("../Middleware/catchAsyncError");
 const ApiFeatures = require("../Utils/apiFeatures");
@@ -7,7 +7,7 @@ const ApiFeatures = require("../Utils/apiFeatures");
 exports.createProduct = catchAsyncError(async (req, res, next) => {
   const product = await Product.create(req.body);
   res.status(201).json({
-    success: true,
+    status: "success",
     product,
   });
 });
@@ -24,7 +24,7 @@ exports.updateProduct = catchAsyncError(async (req, res, next) => {
     useFindAndModify: false,
   });
   res.status(200).json({
-    success: true,
+    status: "success",
     product,
   });
 });
@@ -37,7 +37,7 @@ exports.deleteProduct = catchAsyncError(async (req, res, next) => {
   }
   product = await Product.findByIdAndDelete(req.params.id);
   res.status(200).json({
-    success: true,
+    status: "success",
     message: `${product.name} Product deleted successfully.`,
   });
 });
@@ -50,7 +50,7 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
   }
 
   res.status(200).json({
-    success: true,
+    status: "success",
     product,
   });
 });
@@ -66,7 +66,7 @@ exports.getAllProducts = catchAsyncError(async (req, res, next) => {
     .pagination(resultPerPage);
   const product = await apiFeatures.query;
   res.status(200).json({
-    success: true,
+    status: "success",
     productCount,
     product,
   });
