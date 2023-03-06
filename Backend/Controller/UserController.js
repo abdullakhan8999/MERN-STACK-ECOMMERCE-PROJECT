@@ -14,7 +14,18 @@ exports.createUser = catchAsyncError(async (req, res, next) => {
     },
   });
 
+  //token
+  const token = user.getJWTToken();
+
   res.status(201).json({
+    status: "success",
+    token,
+  });
+});
+
+exports.getUser = catchAsyncError(async (req, res, next) => {
+  const user = await User.findById(req.params.id);
+  res.status(200).json({
     status: "success",
     user,
   });

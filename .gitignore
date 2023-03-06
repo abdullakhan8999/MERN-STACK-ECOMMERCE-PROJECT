@@ -1,6 +1,10 @@
 # Ignore Backend Config directory
 Frontend
 
+#environment variables
+Backend/Config/.env
+
+
 # Ignore node_modules and package-lock.json
 node_modules/
 package-lock.json
