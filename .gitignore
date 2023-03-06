@@ -3,7 +3,7 @@ Frontend
 
 #environment variables
 Backend/Config/.env
-Backend/Config
+Backend/Config/Config.DB.js
 
 # Ignore node_modules and package-lock.json
 node_modules/
