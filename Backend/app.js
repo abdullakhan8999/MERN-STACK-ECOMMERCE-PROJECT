@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const errorMiddleware = require("./Middleware/error");
+const cookiesParser = require("cookie-parser");
 
-//Express middleware
+//middleware
 app.use(express.json());
+app.use(cookiesParser());
 
 // router import
 app.use("/api/v1", require("./Router/ProductRouter"));
