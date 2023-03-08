@@ -56,16 +56,7 @@ exports.logoutUser = catchAsyncError(async (req, res, next) => {
   });
   res.status(200).json({
     status: "success",
-    data: {}
-  });
-});
-
-//Get user details
-exports.getUser = catchAsyncError(async (req, res, next) => {
-  const user = await User.findById(req.params.id);
-  res.status(200).json({
-    status: "success",
-    user,
+    data: {},
   });
 });
 
@@ -256,4 +247,206 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
 
   // Send success response
   sendToken(user, 200, res);
+});
+
+//Get user detailed
+exports.getUserDetails = catchAsyncError(async (req, res, next) => {
+  //when user login user id is fetched to req so using auth
+  const UserId = req.user.id;
+  const user = await User.findById(UserId);
+  if (!user) return next(new ErrorHandler("User doesn't exits!", 400));
+
+  res.status(200).json({
+    status: "success",
+    user,
+  });
+});
+
+//Update password Details
+exports.UpdateUserPassword = catchAsyncError(async (req, res, next) => {
+  //when user login user id is fetched to req so using auth
+  const UserId = req.user.id;
+  const user = await User.findById(UserId).select("+password");
+  if (!user) return next(new ErrorHandler("User doesn't exits!", 400));
+
+  //check for new, old and confirm password
+  if (
+    !req.body.oldPassword ||
+    !req.body.newPassword ||
+    !req.body.confirmPassword
+  ) {
+    return next(
+      new ErrorHandler(
+        `Please enter ${
+          !req.body.oldPassword
+            ? "old"
+            : !req.body.newPassword
+            ? "new"
+            : "confirm"
+        } Password.`,
+        400
+      )
+    );
+  }
+
+  //check old password and if old password is incorrect
+  const isPasswordMatch = await user.comparePassword(req.body.oldPassword);
+  if (!isPasswordMatch) {
+    return next(new ErrorHandler("Old password is incorrect.", 400));
+  }
+
+  //check new and confirm password are same or not
+  if (req.body.confirmPassword != req.body.newPassword) {
+    return next(new ErrorHandler("Passwords does not match.", 400));
+  }
+
+  //if yes reset password and save password to  user
+  user.password = req.body.newPassword;
+  await user.save();
+
+  //send res
+  sendToken(user, 200, res);
+});
+
+// Update user details
+exports.UpdateUserDetails = catchAsyncError(async (req, res, next) => {
+  //check input to update
+  if (!req.body.name || !req.body.email) {
+    return next(
+      new ErrorHandler(
+        `Please enter ${!req.body.name ? "name" : "email"}!`,
+        400
+      )
+    );
+  }
+
+  // user details
+  const updateDetails = {
+    name: req.body.name,
+    email: req.body.email,
+  };
+  // update avatar by cloud later
+
+  //Updating user details
+  await User.findByIdAndUpdate(req.user.id, updateDetails, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  //send res
+  res.status(200).json({
+    status: "success",
+  });
+});
+
+//admin - controller: get all users details
+exports.getAllUsersDetails = catchAsyncError(async (req, res, next) => {
+  //get all user details
+  const users = await User.find();
+  if (!users) return next(new ErrorHandler("Users doesn't exits!", 400));
+
+  res.status(200).json({
+    status: "success",
+    users,
+  });
+});
+
+//admin - controller: user details
+exports.getSingleUser = catchAsyncError(async (req, res, next) => {
+  //check user id input
+  if (!req.params.id) {
+    return next(new ErrorHandler("Please enter User id!", 400));
+  }
+
+  //finding user with id
+  const user = await User.findById(req.params.id);
+  //if user not there
+  if (!user)
+    return next(
+      new ErrorHandler(`User doesn't exits id:${req.params.id}`, 400)
+    );
+
+  res.status(200).json({
+    status: "success",
+    user,
+  });
+});
+
+//admin - controller: update user role
+exports.UpdateUserRole = catchAsyncError(async (req, res, next) => {
+  //check input id
+  if (!req.params.id)
+    return next(new ErrorHandler("Please enter user id!", 400));
+
+  //find user
+  const user = await User.findById(req.params.id);
+
+  //if user not there
+  if (!user)
+    return next(
+      new ErrorHandler(`User doesn't exits!, id:${req.params.id}.`, 404)
+    );
+
+  //check input to update
+  if (!req.body.name || !req.body.email || !req.body.role || !req.params.id) {
+    return next(
+      new ErrorHandler(
+        `Please enter ${
+          !req.body.name
+            ? "name"
+            : !req.body.email
+            ? "email"
+            : !req.body.role
+            ? "role"
+            : "user id"
+        }!`,
+        400
+      )
+    );
+  }
+
+  // user details
+  const updateDetails = {
+    name: req.body.name,
+    email: req.body.email,
+    role: req.body.role,
+  };
+  // update avatar by cloud later
+
+  //Updating user details
+  await User.findByIdAndUpdate(req.params.id, updateDetails, {
+    new: true,
+    runValidators: true,
+    useFindAndModify: false,
+  });
+
+  //send res
+  res.status(200).json({
+    status: "success",
+  });
+});
+
+//admin - controller: delete user
+exports.deleteUser = catchAsyncError(async (req, res, next) => {
+  //check input id
+  if (!req.params.id)
+    return next(new ErrorHandler("Please enter user id!", 400));
+
+  //find user
+  const user = await User.findById(req.params.id);
+
+  //if user not there
+  if (!user)
+    return next(
+      new ErrorHandler(`User doesn't exits!, id:${req.params.id}.`, 404)
+    );
+
+  //if find user then remove
+  await User.deleteOne({ _id: req.params.id });
+
+  res.status(200).json({
+    status: "success",
+    message: `User deleted successfully!`,
+  });
 });
