@@ -10,23 +10,22 @@ import Loader from "../layout/Loader/Loader";
 
 
 // example product
-const product = {
-  name: "Blue TShirt",
-  image: [
-    {
-      url: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fcc%2Ff4%2Fccf4564f8bb0682c92f55d1136fc0869a3812dcb.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_boys_clothing_tshirtsshirts_tshirts%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
-    },
-  ],
-  price: "3000",
-  _id: "Abdul",
-};
+// const product = {
+//   name: "Blue TShirt",
+//   image: [
+//     {
+//       url: "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fcc%2Ff4%2Fccf4564f8bb0682c92f55d1136fc0869a3812dcb.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bkids_boys_clothing_tshirtsshirts_tshirts%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
+//     },
+//   ],
+//   price: "3000",
+//   _id: "Abdul",
+// };
 
 export default function Home() {
 
   // const alert = useAlert();
   const dispatch = useDispatch();
-  // const { loading, error, products, productsCount } = useSelector(state => state.products);
-  const { loading } = useSelector(state => state.products);
+  const { loading, error, products, productsCount } = useSelector(state => state.products);
   // useSelector(state => console.log(state.products, "HOME"));
 
 
@@ -55,8 +54,8 @@ export default function Home() {
           <h2 className="homeHeading">Featured Product</h2>
 
           <div className="container" id="container">
-            {/* {products && products.map((product) => <Product key={product._id} product={product} />)} */}
-            {product && <Product key={product._id} product={product} />}
+            {/* {product && <Product key={product._id} product={product} />} */}
+            {products && products.map((product) => <Product key={product._id} product={product} />)}
           </div>
         </Fragment>
       }

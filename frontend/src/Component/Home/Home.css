@@ -92,6 +92,11 @@
 .productCard > img {
   width: 14vmax;
 }
+.productCard > img:hover {
+  transition: 1s;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
 
 .productCard > div {
   margin: 0.5vmax;
@@ -114,6 +119,10 @@
 .productCard > .stars {
   display: flex;
   align-items: center;
+}
+.stars > .review {
+  font-family: "Roboto";
+  font-size: 1vmax;
 }
 
 .productCard > span {
