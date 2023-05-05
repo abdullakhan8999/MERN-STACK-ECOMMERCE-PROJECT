@@ -1,9 +1,11 @@
 # Ignore Backend Config directory
-Frontend
+.gitignore
 
 #environment variables
 Backend/Config/.env
 Backend/Config/Config.DB.js
+
+Frontend/src/images
 
 # Ignore node_modules and package-lock.json
 node_modules/

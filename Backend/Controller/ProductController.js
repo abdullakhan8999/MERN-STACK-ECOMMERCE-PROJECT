@@ -60,16 +60,16 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
 exports.getAllProducts = catchAsyncError(async (req, res, next) => {
   // Api take query , request parameters, Pagination
   const resultPerPage = 5;
-  const productCount = await Product.countDocuments();
+  const productsCount = await Product.countDocuments();
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
     .pagination(resultPerPage);
-  const product = await apiFeatures.query;
+  const products = await apiFeatures.query;
   res.status(200).json({
     status: "success",
-    productCount,
-    product,
+    productsCount,
+    products,
   });
 });
 
