@@ -16,7 +16,7 @@ const Option = {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <AlertProvider template={AlertTemplate} {...Option}>
+    <AlertProvider template={AlertTemplate} {...Option}> 
       <App />
     </AlertProvider>
   </Provider>

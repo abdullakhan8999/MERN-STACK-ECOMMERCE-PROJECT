@@ -36,7 +36,7 @@ export default function Product({ product }) {
       <div className="stars">
         <ReactStar {...options} /> <span className="review">({product.numberOfReview} reviews)</span>
       </div>
-      <span>{`$${product.price}`}</span>
+      <span>{`₹${product.price}`}</span>
     </Link>
   );
 };

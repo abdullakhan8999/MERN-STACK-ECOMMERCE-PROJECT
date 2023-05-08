@@ -6,7 +6,7 @@ import MetaData from "../layout/MetaData";
 import { getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
-// import { useAlert } from "react-alert";
+import { useAlert } from "react-alert";
 
 
 // example product
@@ -23,18 +23,18 @@ import Loader from "../layout/Loader/Loader";
 
 export default function Home() {
 
-  // const alert = useAlert();
+  const alert = useAlert();
   const dispatch = useDispatch();
   const { loading, error, products, productsCount } = useSelector(state => state.products);
   // useSelector(state => console.log(state.products, "HOME"));
 
 
   useEffect(() => {
-  //   if (error) {                                
-  //     return alert.error(error);
-  //   }
+      if (error) {                                
+        return alert.error(error);
+      }
     dispatch(getProduct())
-  }, [dispatch]);
+  }, [dispatch, alert, error]);
 
   return (
     <Fragment>
