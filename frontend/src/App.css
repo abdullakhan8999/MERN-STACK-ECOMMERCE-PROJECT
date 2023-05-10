@@ -2,3 +2,23 @@
   margin: 0;
   scroll-behavior: smooth;
 }
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.redColor {
+  color: red;
+  text-decoration: underline;
+}
+
+.greenColor {
+  color: green;
+  text-decoration: underline;
+}

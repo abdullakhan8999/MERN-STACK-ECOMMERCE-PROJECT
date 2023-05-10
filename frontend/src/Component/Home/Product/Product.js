@@ -34,8 +34,9 @@ export default function Product({ product }) {
       {imageUrl && <img src={imageUrl} alt={product.name} />}
       <p>{product.name}</p>
       <div className="stars">
-        <ReactStar {...options} /> <span className="review">({product.numberOfReview} reviews)</span>
-      </div> 
+        <ReactStar {...options} /> 
+        <span className="review">({product.numberOfReview} reviews)</span>
+      </div>
       <span>{`₹${product.price}`}</span>
     </Link>
   );

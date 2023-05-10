@@ -13,7 +13,7 @@ import {
 export const getProduct = () => async (dispatch) => {
    try {
       dispatch({ type: All_PRODUCT_REQUEST });
-      const { data } = await axios.get("/api/v1/products");
+      const { data } = await axios.get("http://localhost:4000/api/v1/products");
       // console.log(data, "hello");  
       dispatch({ type: All_PRODUCT_SUCCESS, payload: data });
    } catch (error) {
@@ -35,7 +35,7 @@ export const getProductDetails = (id) => async (dispatch) => {
    try {
       dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-      const { data } = await axios.get(`/api/v1/product/${id}`);
+      const { data } = await axios.get(`http://localhost:4000/api/v1/product/${id}`);
       // console.log(data, "hello");  
 
       dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.product });

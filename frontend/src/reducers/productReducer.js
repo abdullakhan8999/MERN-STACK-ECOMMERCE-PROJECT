@@ -51,6 +51,7 @@ export const productDetailsReducer = (state = { products: {} }, action) => {
          };
 
       case PRODUCT_DETAILS_SUCCESS:
+         // console.log("action.payload", action.payload);
          return {
             loading: false,
             product: action.payload
