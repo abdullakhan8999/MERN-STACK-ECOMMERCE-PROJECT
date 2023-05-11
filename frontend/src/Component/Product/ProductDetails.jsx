@@ -6,6 +6,7 @@ import { getProductDetails } from "../../actions/productAction";
 import { useParams } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
 import ReactStar from "react-rating-stars-component";
+import ReviewCard from "./ReviewCard";
 
 export default function ProductDetails() {
   //getting  product details from backend to store
@@ -18,7 +19,7 @@ export default function ProductDetails() {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
-  // console.log(product);
+  console.log(product && product.reviews);
 
   useEffect(() => {
     if (error) {
@@ -72,7 +73,7 @@ export default function ProductDetails() {
                 <div className="detailsBlock-3-1">
                   <div className="detailsBlock-3-1-1 number-of-product-adding-div">
                     <button>-</button>
-                    <input type="number" value={1} />
+                    {/* <input type="number" value={1} /> */}
                     <button>+</button>
                   </div>
                   <button className="add-to-cart-button">Add to Cart</button>
@@ -93,6 +94,14 @@ export default function ProductDetails() {
           </div>
 
           <h3 className="reviewsHeading">REVIEWS</h3>
+          {product.reviews && product.reviews[0] ? (
+            <div className="reviews">
+              {product.reviews &&
+                product.reviews.map((review) => <ReviewCard review={review} />)}
+            </div>
+          ) : (
+            <p className="no-reviews">No reviews Yet!</p>
+          )}
         </Fragment>
       )}
     </Fragment>

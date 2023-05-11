@@ -14,5 +14,6 @@ package-lock.json
 #ignore
 .vscode
 variables.js
-Resources
+Frontend/public/Resources/img
+Frontend/public/Resources/videos
 thunder-collection_MERN ECOMMERCE WBSITE.json
