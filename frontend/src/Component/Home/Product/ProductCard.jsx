@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ReactStar from "react-rating-stars-component";
 
-
 // export default function Product({ product }) {
 
 //   return (
@@ -17,7 +16,7 @@ import ReactStar from "react-rating-stars-component";
 //   );
 // }
 
-export default function Product({ product }) {
+export default function ProductCard({ product }) {
   const options = {
     edit: false,
     color: "rgba(20,20,20,0.1)",
@@ -27,17 +26,18 @@ export default function Product({ product }) {
     isHalf: true,
   };
 
-  const imageUrl = product.images && product.images.length > 0 ? product.images[0].url : null;
+  const imageUrl =
+    product.images && product.images.length > 0 ? product.images[0].url : null;
 
   return (
     <Link className="productCard" to={`/product/${product._id}`}>
       {imageUrl && <img src={imageUrl} alt={product.name} />}
       <p>{product.name}</p>
       <div className="stars">
-        <ReactStar {...options} /> 
+        <ReactStar {...options} />
         <span className="review">({product.numberOfReview} reviews)</span>
       </div>
       <span>{`₹${product.price}`}</span>
     </Link>
   );
-};
+}

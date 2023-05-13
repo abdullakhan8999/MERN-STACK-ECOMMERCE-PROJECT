@@ -2,15 +2,19 @@ import React, { Fragment, useEffect } from "react";
 import Carousel from "react-material-ui-carousel";
 import "./ProductDetails.css";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductDetails } from "../../actions/productAction";
+import { clearErrors, getProductDetails } from "../../actions/productAction";
 import { useParams } from "react-router-dom";
 import Loader from "../layout/Loader/Loader";
 import ReactStar from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard";
+import { useAlert } from "react-alert";
 
 export default function ProductDetails() {
   //getting  product details from backend to store
   const dispatch = useDispatch();
+
+  //alert for error
+  const alert = useAlert();
 
   // get id parameter from URL
   const { id } = useParams();
@@ -19,11 +23,11 @@ export default function ProductDetails() {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
-  console.log(product && product.reviews);
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearErrors);
     }
     dispatch(getProductDetails(id));
   }, [dispatch, id, alert, error]);
@@ -33,9 +37,10 @@ export default function ProductDetails() {
     color: "rgba(20,20,20,0.1)",
     size: window.innerWidth < 600 ? 25 : 30,
     activeColor: "tomato",
-    value: product && product.ratings ? product.ratings : 0,
+    value: product && product.ratings,
     isHalf: true,
   };
+  // console.log(product && product.reviews, product && product.ratings);
   return (
     <Fragment>
       {loading || !product ? (
@@ -97,7 +102,9 @@ export default function ProductDetails() {
           {product.reviews && product.reviews[0] ? (
             <div className="reviews">
               {product.reviews &&
-                product.reviews.map((review) => <ReviewCard review={review} />)}
+                product.reviews.map((review) => (
+                  <ReviewCard key={review._id} review={review} />
+                ))}
             </div>
           ) : (
             <p className="no-reviews">No reviews Yet!</p>

@@ -1,13 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
 import "./Home.css";
-import Product from "./Product/Product.js";
+import Product from "./Product/ProductCard.jsx";
 import MetaData from "../layout/MetaData";
-import { getProduct } from "../../actions/productAction";
+import { clearErrors, getProduct } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
-
 
 // example product
 // const product = {
@@ -22,24 +21,25 @@ import { useAlert } from "react-alert";
 // };
 
 export default function Home() {
-
   const alert = useAlert();
   const dispatch = useDispatch();
-  const { loading, error, products } = useSelector(state => state.products);
+  const { loading, error, products } = useSelector((state) => state.products);
   // useSelector(state => console.log(state.products, "HOME"));
 
-
   useEffect(() => {
-      if (error) {                                
-        return alert.error(error);
-      }
-    dispatch(getProduct())
+    if (error) {
+      alert.error(error);
+      dispatch(clearErrors);
+    }
+    dispatch(getProduct());
   }, [dispatch, alert, error]);
 
   return (
     <Fragment>
-      {
-        loading ? <Loader /> : <Fragment>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Fragment>
           <MetaData title={"MaNa-Ecomm-Store"} />
           <div className="banner">
             <p>Welcome to MaNa-Ecomm</p>
@@ -55,10 +55,13 @@ export default function Home() {
 
           <div className="container" id="container">
             {/* {product && <Product key={product._id} product={product} />} */}
-            {products && products.map((product) => <Product key={product._id} product={product} />)}
+            {products &&
+              products.map((product) => (
+                <Product key={product._id} product={product} />
+              ))}
           </div>
         </Fragment>
-      }
+      )}
     </Fragment>
   );
 }

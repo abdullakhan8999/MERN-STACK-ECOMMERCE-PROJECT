@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import Header from "./Component/layout/Header/Header.js";
-import Footer from "./Component/layout/Footer/Footer.js";
+import Header from "./Component/layout/Header/Header";
+import Footer from "./Component/layout/Footer/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WebFont from "webfontloader";
-import Home from "./Component/Home/Home.js";
-import ProductDetails from "./Component/Product/ProductDetails.jsx"
+import Home from "./Component/Home/Home";
+import ProductDetails from "./Component/Product/ProductDetails"
 import "./App.css"
 export default function App() {
   //Loading font style

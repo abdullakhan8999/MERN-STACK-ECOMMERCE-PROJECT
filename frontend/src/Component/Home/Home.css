@@ -104,7 +104,7 @@
   justify-content: flex-start;
 }
 
-.productCard > div > span {
+.productCard > div > .review {
   margin: 0.5vmax;
   font: 300 0.7vmax "Roboto";
 }
@@ -119,6 +119,7 @@
 .productCard > .stars {
   display: flex;
   align-items: center;
+  width: max-content;
 }
 .stars > .review {
   font-family: "Roboto";

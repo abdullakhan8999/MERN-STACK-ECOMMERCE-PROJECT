@@ -14,7 +14,7 @@ export default function ReviewCard({ review }) {
       <div>
         <img
           className="profilePng"
-          src="/Resources/images/profilePng.png"
+          src="/Resources/images/user.svg"
           alt="User"
         />
         <p>{review.name}</p>

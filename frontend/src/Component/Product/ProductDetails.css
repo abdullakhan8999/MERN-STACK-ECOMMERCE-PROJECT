@@ -192,6 +192,10 @@
   padding: 1vmax;
   letter-spacing: 2px;
 }
+.reviews {
+  display: flex;
+  overflow: auto;
+}
 
 .review-card {
   /* flex: none; */
@@ -200,23 +204,42 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30vmax;
-  margin: 1vmax auto;
+  width: 340vmax;
+  margin: 1vmax 1vmax;
   padding: 3vmax;
+  border-radius: 10px;
 }
 .review-card > div {
-  width: 100%;
   display: flex;
+  width: 100%;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 1vmax;
 }
 .profilePng {
-  width: 5vmax;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+.review-card > div > p {
+  font-size: 23px;
+  margin-left: 14px;
+  margin-right: 20px;
+  font-weight: 400;
+  font-family: sans-serif;
 }
 .stars-in-review {
   /* padding-bottom: 5px; */
+  width: max-content;
+  padding-bottom: 5px;
+}
+.no-reviews {
+  font-size: 1.3vmax;
+  text-align: center;
+  font-weight: 400;
+  font-family: cursive;
+  color: rgba(0, 0, 0, 0.548);
 }
 
 @media (max-width: 1000px) {
