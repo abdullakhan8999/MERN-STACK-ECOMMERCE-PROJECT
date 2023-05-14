@@ -4,7 +4,7 @@ import "./ProductDetails.css";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, getProductDetails } from "../../actions/productAction";
 import { useParams } from "react-router-dom";
-import Loader from "../layout/Loader/Loader";
+import Loader from "../Loader/Loader";
 import ReactStar from "react-rating-stars-component";
 import ReviewCard from "./ReviewCard";
 import { useAlert } from "react-alert";
