@@ -41,6 +41,10 @@
   letter-spacing: 3px;
 }
 
+.head > a {
+  text-decoration: none;
+  color: white;
+}
 .head {
   font-size: 30px;
   line-height: 20px;
