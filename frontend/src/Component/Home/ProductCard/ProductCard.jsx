@@ -26,23 +26,23 @@ function ProductCard({ product }) {
   const imageUrl =
     product.images && product.images.length > 0 ? product.images[0].url : null;
   return (
-    <div class="productCard-Container">
+    <div className="productCard-Container">
       {imageUrl && <img src={imageUrl} alt={product.name} />}
-      <div class="overlay">
-        <div class="items"></div>
-        <div class="items head" onClick={() => productDetailsPage()}>
+      <div className="overlay">
+        <div className="items"></div>
+        <div className="items head" onClick={() => productDetailsPage()}>
           <p>{product.name}</p>
           <hr />
         </div>
-        <div class="items price">
-          <div class="item-rating">
+        <div className="items price">
+          <div className="item-rating">
             <ReactStar classNames="StarRating" {...options} />
             <span className="review-num">{product.numberOfReview} reviews</span>
           </div>
-          <p class="new">{`₹${product.price}`}</p>
+          <p className="new">{`₹${product.price}`}</p>
         </div>
-        <div class="items cart">
-          <i class="fa fa-shopping-cart"></i>
+        <div className="items cart">
+          <i className="fa fa-shopping-cart"></i>
           <button className="active" onClick={() => handleAddToCart()}>
             ADD TO CART
           </button>

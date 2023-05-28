@@ -1,12 +1,14 @@
 import React, { Fragment, useEffect } from "react";
-import { FiChevronDown } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import "./Home.css";
-import Product from "./ProductCard/ProductCard.jsx";
+import ProductCard from "./ProductCard/ProductCard.jsx";
 import MetaData from "../layout/MetaData";
-import { clearErrors, getProduct } from "../../actions/productAction";
+import { clearErrors, getProducts } from "../../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
-import Loader from "../Loader/Loader";
 import { useAlert } from "react-alert";
+import Loader from "../Loader/Loader";
+import Carousel from "../Carousel/Carousel";
+import PopularProductsCarousel from "./popularProducts/popularProducts";
 
 export default function Home() {
   const alert = useAlert();
@@ -14,7 +16,7 @@ export default function Home() {
   const { loading, error, products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(getProduct());
+    dispatch(getProducts());
     if (error) {
       alert.error("Failed to fetch products. Please try again later.");
       console.error("Failed to fetch products:", error);
@@ -29,23 +31,36 @@ export default function Home() {
       ) : (
         <Fragment>
           <MetaData title={"MaNa-Ecomm-Store"} />
-          <div className="banner">
-            <p>Welcome to MaNa-Ecomm</p>
-            <h1>FIND AMAZING PRODUCTS BELOW</h1>
-            <a href="#container">
-              <button type="click">
-                Scroll <FiChevronDown />
-              </button>
-            </a>
+          <div className="carousel-section">
+            <Carousel />
           </div>
-
-          <h2 className="homeHeading">Featured Product</h2>
-
+          <div className="banner">
+            <h1>NEW ARRIVAL</h1>
+            <p>FIND AMAZING PRODUCTS BELOW</p>
+          </div>
           <div className="container" id="container">
             {products &&
               products.map((product) => (
-                <Product key={product._id} product={product} />
+                <ProductCard key={product._id} product={product} />
               ))}
+          </div>
+          <div className="homeHeading">
+            <h1>POPULAR PRODUCTS</h1>
+            <p>
+              Shop the best-selling products that everyone's talking about and
+              upgrade your style effortlessly.
+            </p>
+          </div>
+          <div className="popularProducts-container">
+            <PopularProductsCarousel products={products} />
+          </div>
+
+          <div className="banner-bottom">
+            <span>See personalized recommendations</span>
+            <button type="submit">Sign In</button>
+            <p>
+              New Customer? <Link to="/signup">Sign Up</Link>{" "}
+            </p>
           </div>
         </Fragment>
       )}

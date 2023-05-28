@@ -1,0 +1,61 @@
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Sub-screen {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.Sub-screen > figure > img {
+  width: auto;
+  height: 70px;
+  background-size: cover;
+  object-fit: contain;
+  cursor: pointer;
+  padding-inline: 10px;
+}
+
+.Main-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Main-screen > img {
+  width: 300px;
+  height: 400px;
+  margin-bottom: 14px;
+  object-fit: contain;
+}
+
+@media (max-width: 768px) {
+  .Main-screen > img {
+    width: 200px;
+    height: 400px;
+    margin-bottom: 14px;
+    object-fit: contain;
+  }
+  .Wrapper {
+    flex-direction: row;
+  }
+  .Sub-screen {
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25%;
+  }
+  .Sub-screen > figure > img {
+    width: auto;
+    height: 50px;
+    background-size: contain;
+    object-fit: contain;
+    cursor: pointer;
+    padding-inline: 10px;
+  }
+}

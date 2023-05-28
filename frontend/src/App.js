@@ -1,12 +1,14 @@
 import React, { useEffect } from "react";
-import Header from "./Component/layout/Header/Header";
+import Header from "./Component/layout/Navbar/Navbar";
 import Footer from "./Component/layout/Footer/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import WebFont from "webfontloader";
 import Home from "./Component/Home/Home";
-import ProductDetails from "./Component/Product/ProductDetails"
-import Products from "./Component/Product/Products"
-import "./App.css"
+import ProductDetails from "./Component/Product/ProductDetails Page/ProductDetails"
+import Products from "./Component/Product/All Products page/Products"
+import Search from  "./Component/Product/Search.jsx"
+import "./App.css";
+
 export default function App() {
   //Loading font style
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function App() {
         <Route exact path="/" element={<Home />} />
         <Route exact path="/product/:id" element={<ProductDetails />} />
         <Route exact path="/products" element={<Products />} />
+        <Route exact path="/search" element={<Search />} />
       </Routes>
       <Footer />
     </Router>

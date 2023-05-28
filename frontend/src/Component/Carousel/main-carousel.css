@@ -1,0 +1,18 @@
+.legend-h3 {
+  font-size: 50px;
+  color: #666666;
+}
+.legend-p {
+  font-size: 25px;
+  padding-bottom: 10px;
+  color: rgb(77, 77, 77);
+}
+.legend-btn {
+  height: 30px;
+  width: 90px;
+  border-radius: 20px;
+  border: none;
+  background-color: #2b3a4d;
+  color: white;
+  letter-spacing: 1px;
+}

@@ -9,7 +9,7 @@
   font-family: sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
-  margin-top: 30px;
+  /* margin-top: 30px; */
 }
 .leftEle {
   width: 25%;
@@ -78,9 +78,6 @@
 }
 
 @media (max-width: 768px) {
-  .footer {
-    padding-inline: 5px;
-  }
   .mainEle > h1 {
     font-size: 1.2em;
     text-align: center;

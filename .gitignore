@@ -3,7 +3,8 @@
 
 #environment variables
 Backend/Config/.env
-Backend/Config/Config.DB.js
+Backend/Config/Cloudinary.config
+Backend/Config/ConfigDB
 
 Frontend/src/images
 
@@ -14,6 +15,7 @@ package-lock.json
 #ignore
 .vscode
 variables.js
+proJSON.json
 Frontend/public/Resources/img
 Frontend/public/Resources/videos
 thunder-collection_MERN ECOMMERCE WBSITE.json

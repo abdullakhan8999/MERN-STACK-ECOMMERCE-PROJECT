@@ -6,7 +6,14 @@ const productSchema = new mongoose.Schema({
     required: [true, "Please Enter product name."],
     trim: true,
   },
-  description: { type: String, required: [true, "Please Enter description."] },
+  description: {
+    type: String,
+    required: [true, "Please Enter description."]
+  },
+  brand: {
+    type: String,
+    required: [true, "Please Enter brand."]
+  },
   price: {
     type: Number,
     required: [true, "Please Enter product price."],
@@ -20,6 +27,7 @@ const productSchema = new mongoose.Schema({
     {
       Public_id: {
         type: String,
+        default: () => Date.now().toString(),
         required: true,
       },
       url: {
@@ -28,6 +36,10 @@ const productSchema = new mongoose.Schema({
       },
     },
   ],
+  colors: {
+    type: [String], // Array of strings representing the available colors
+    required: true,
+  },
   category: {
     type: String,
     required: [true, "Please Enter category."],
@@ -45,7 +57,7 @@ const productSchema = new mongoose.Schema({
   reviews: [
     {
       user: {
-        type: mongoose.Schema.ObjectId,
+        type: String,
         ref: "User",
         required: true,
       },

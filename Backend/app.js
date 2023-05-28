@@ -13,6 +13,7 @@ app.use(cors());
 app.use("/api/v1", require("./Router/ProductRouter"));
 app.use("/api/v1", require("./Router/UserRouter"));
 app.use("/api/v1", require("./Router/OrderRouter"));
+app.use("/api/v1", require("./Router/UploadImagesRouter"));
 
 //Middleware for error
 app.use(errorMiddleware);

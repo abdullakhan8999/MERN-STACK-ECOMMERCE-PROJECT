@@ -1,0 +1,23 @@
+.accordion {
+  border: 1px solid #ced4da;
+  width: 90%;
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: azure;
+  border-bottom: 1px solid #ced4da;
+  cursor: pointer;
+}
+
+.accordion-title {
+  flex-grow: 1;
+  margin-bottom: 0;
+}
+
+.accordion-content {
+  padding: 10px;
+  background-color: #fff;
+}

@@ -8,6 +8,7 @@ const {
   createProductReview,
   getAllReviewOfProduct,
   deleteReviewOfProduct,
+  addCarouselItem
 } = require("../Controller/ProductController");
 const { isAuthenticatedUser, authorizedRoles } = require("../Middleware/auth");
 
@@ -38,5 +39,6 @@ router
   .route("/review")
   .get(isAuthenticatedUser, getAllReviewOfProduct)
   .delete(isAuthenticatedUser, deleteReviewOfProduct);
+
 
 module.exports = router;

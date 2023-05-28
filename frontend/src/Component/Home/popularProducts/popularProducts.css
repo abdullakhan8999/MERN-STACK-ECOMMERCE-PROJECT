@@ -1,0 +1,49 @@
+.popularProducts-container {
+  width: 90%;
+  margin: auto;
+}
+
+.carouselCard {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 420px;
+  margin: auto 1rem;
+  text-align: center;
+  font-family: arial;
+}
+
+.carouselProduct--image {
+  width: 100%;
+  height: 16em;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.carouselProduct-price {
+  color: grey;
+  font-size: 22px;
+  margin: 5px auto;
+}
+
+.carouselCard > p > button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.carouselCard > p > button:hover {
+  opacity: 0.7;
+}
+
+.carouselCard-brand {
+  font-size: 14px;
+}
+.carouselCard > a {
+  text-decoration: none;
+  color: black;
+}

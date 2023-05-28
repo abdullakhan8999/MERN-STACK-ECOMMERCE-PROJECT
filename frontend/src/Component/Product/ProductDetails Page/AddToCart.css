@@ -1,0 +1,75 @@
+.colors > p {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 20px;
+  font-weight: 600;
+}
+.btnStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background-color: #000;
+  border-radius: 50%;
+  margin-left: 1rem;
+  border: none;
+  outline: none;
+  opacity: 0.5;
+  cursor: pointer;
+  border: 1px solid rgb(201, 191, 191);
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.active {
+  opacity: 1;
+}
+
+.checkStyle {
+  font-size: 18px;
+  color: #000000;
+}
+
+.amount-toggle {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.amount-toggle > button {
+  background: none;
+  border: none;
+}
+
+.amount-style {
+  width: 20px;
+  text-align: center;
+}
+
+.cart-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-btn > a > button {
+  font-size: 20px;
+  font-weight: 600;
+  background-color: #b1e6ed;
+  color: #333332;
+  border: none;
+  height: 50px;
+  padding: 10px;
+  opacity: 0.8;
+  transition: all 1s ease-in-out;
+}
+
+.cart-btn > a > button:hover {
+  opacity: 2;
+}
+.cart-btn > a > button:active {
+  transform: translateY(10px);
+}
