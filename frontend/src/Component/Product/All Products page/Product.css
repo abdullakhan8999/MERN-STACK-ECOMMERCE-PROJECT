@@ -202,4 +202,12 @@
     border-bottom: 1px solid #cdcac8;
     padding-bottom: 2px;
   }
+  .filterBox {
+    width: 20vmax;
+    margin: auto;
+    position: static;
+  }
+  .page-link {
+    font-size: 1.7vmax;
+  }
 }

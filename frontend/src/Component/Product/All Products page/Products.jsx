@@ -63,7 +63,7 @@ function Products() {
               ))}
           </div>
 
-          {/* <div className="filterBox">
+          <div className="filterBox">
             <Typography>Price</Typography>
             <Slider
               value={price}
@@ -73,9 +73,9 @@ function Products() {
               min={0}
               max={250000}
             />
-          </div> */}
+          </div>
 
-          {resultPerPage < productsCount && (
+          {resultPerPage < count && (
             <div className="paginationBox">
               <Pagination
                 activePage={currentPage}

@@ -54,23 +54,30 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
     status: "success",
     product,
   });
-}); 
+});
 
 // Get all product
 exports.getAllProducts = catchAsyncError(async (req, res, next) => {
   // Api take query , request parameters, Pagination
   const resultPerPage = 8;
   const productsCount = await Product.countDocuments();
+
   const apiFeatures = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
-    .pagination(resultPerPage);
-  const products = await apiFeatures.query;
+
+  let products = await apiFeatures.query.clone();
+  let filteredProductsCount = products.length;
+
+  apiFeatures.pagination(resultPerPage);
+  products = await apiFeatures.query;
+
   res.status(200).json({
     status: "success",
     productsCount,
     products,
-    resultPerPage
+    resultPerPage,
+    filteredProductsCount,
   });
 });
 
