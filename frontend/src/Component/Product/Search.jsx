@@ -8,11 +8,12 @@ function Search() {
   const HandleSearchSubmit = (e) => {
     e.preventDefault();
     if (keyword.trim()) {
-      navigate(`/product/${keyword}`);
+      navigate(`/products/${keyword}`);
     } else {
       navigate(`/products`);
     }
   };
+  console.log(keyword);
   return (
     <Fragment>
       <form className="search-box" onSubmit={HandleSearchSubmit}>

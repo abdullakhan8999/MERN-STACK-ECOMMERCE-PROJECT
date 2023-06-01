@@ -54,7 +54,7 @@ exports.getProductDetails = catchAsyncError(async (req, res, next) => {
     status: "success",
     product,
   });
-});
+}); 
 
 // Get all product
 exports.getAllProducts = catchAsyncError(async (req, res, next) => {
@@ -70,6 +70,7 @@ exports.getAllProducts = catchAsyncError(async (req, res, next) => {
     status: "success",
     productsCount,
     products,
+    resultPerPage
   });
 });
 

@@ -4,7 +4,7 @@ import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {
-  const alert = useAlert();
+  // const alert = useAlert();
   // const productDetailsPage = () => {
   //   try {
   //     window.location.href = `/product/${product._id}`;
@@ -13,33 +13,28 @@ function ProductCard({ product }) {
   //   }
   // };
   const options = {
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    size: 20,
-    activeColor: "tomato",
     value: product.ratings,
-    isHalf: true,
+    readOnly: true,
+    precision: 0.5,
   };
   return (
-    <div className=" product-page-container product-page-warper">
-      <img
-        src={product.images[0].url}
-        alt={product.name}
-        className="product-page-image"
-      />
-      <div className="product-name-price-rating">
-        <Link to={`/product/${product._id}`} className="product-name-rating">
-          <h3 className="">{product.name}</h3>
-          <ReactStar {...options} />
-        </Link>
-        <h3 className="product-price">${product.price}</h3>
+    <Link className="productsCard" to={`/product/${product._id}`}>
+      <img src={product.images[0].url} alt={product.name} />
+      <p>{product.name}</p>
+      <div>
+        <ReactStar {...options} />{" "}
+        {product.numOfReviews && (
+          <span className="productsCardSpan">
+            {" "}
+            ({product.numOfReviews} Reviews)
+          </span>
+        )}
       </div>
-      <div className="price-and-cart">
-        <button className="active">
-          <i className="fa fa-shopping-cart" /> ADD TO CART
-        </button>
-      </div>
-    </div>
+      <span>{`₹${product.price}`}</span>
+      <button className="add-to-cart-btn">
+        <i className="fa fa-shopping-cart" /> ADD TO CART
+      </button>
+    </Link>
   );
 }
 

@@ -15,15 +15,16 @@ function Navbar() {
   return (
     <div className="nav-container">
       <nav className="nav-bar">
-        <div className="nav-logo" >
+        <Link className="nav-logo" to="/">
           <img src={NavLogo} alt="Logo-img" />
           <h1>MaNa-Ecomm</h1>
-        </div>
+        </Link>
         <div className="nav-links">
           <ul className={`ul-links ${isMenuOpen ? "show-ul-links" : null}`}>
             <li className="nav-li">
               <Link
                 onClick={() => {
+                  setMenuOpen(!isMenuOpen);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 to="/"
@@ -34,6 +35,7 @@ function Navbar() {
             <li className="nav-li">
               <Link
                 onClick={() => {
+                  setMenuOpen(!isMenuOpen);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 to="/products"
@@ -44,6 +46,7 @@ function Navbar() {
             <li className="nav-li">
               <Link
                 onClick={() => {
+                  setMenuOpen(!isMenuOpen);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 to="/about"
@@ -54,6 +57,7 @@ function Navbar() {
             <li className="nav-li">
               <Link
                 onClick={() => {
+                  setMenuOpen(!isMenuOpen);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 to="/contact"
@@ -64,6 +68,7 @@ function Navbar() {
             <li className="nav-li">
               <Link
                 onClick={() => {
+                  setMenuOpen(!isMenuOpen);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 to="/search"

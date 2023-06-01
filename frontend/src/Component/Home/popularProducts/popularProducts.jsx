@@ -13,7 +13,7 @@ const responsive = {
   },
   desktop: {
     breakpoint: { max: 1024, min: 800 },
-    items: 4,
+    items: 3,
     slidesToSlide: 3,
   },
   tablet: {
@@ -39,7 +39,7 @@ const ProductCarousel = ({ products }) => {
     <Carousel
       responsive={responsive}
       autoPlaySpeed={2000}
-      // autoPlay={true}
+      autoPlay={true}
       draggable={true}
       infinite={true}
       arrows={true} // Show arrow navigation
