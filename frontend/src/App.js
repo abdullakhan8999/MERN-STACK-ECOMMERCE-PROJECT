@@ -7,6 +7,7 @@ import Home from "./Component/Home/Home";
 import ProductDetails from "./Component/Product/ProductDetails Page/ProductDetails"
 import Products from "./Component/Product/All Products page/Products"
 import Search from "./Component/Product/Search.jsx"
+import LoginSignUp from "./Component/User/LoginSignUp.jsx"
 import "./App.css";
 
 export default function App() {
@@ -29,8 +30,9 @@ export default function App() {
         <Route exact path="/products" element={<Products />} />
         <Route path="/products/:keyword" element={<Products />} />
         <Route exact path="/search" element={<Search />} />
+        <Route exact path="/login" element={<LoginSignUp />} />
       </Routes>
       <Footer />
     </Router>
   );
-} 
+}  

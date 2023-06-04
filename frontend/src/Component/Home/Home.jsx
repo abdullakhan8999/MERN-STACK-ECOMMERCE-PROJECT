@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
 import ProductCard from "./ProductCard/ProductCard.jsx";
 import MetaData from "../layout/MetaData";
 import { clearErrors, getProducts } from "../../actions/productAction";
@@ -9,6 +8,7 @@ import { useAlert } from "react-alert";
 import Loader from "../Loader/Loader";
 import Carousel from "../Carousel/Carousel";
 import PopularProductsCarousel from "./popularProducts/popularProducts";
+import "./Home.css";
 
 export default function Home() {
   const alert = useAlert();
@@ -52,7 +52,7 @@ export default function Home() {
             </p>
           </div>
           <div className="popularProducts-container">
-            <PopularProductsCarousel products={products} />
+            {products && <PopularProductsCarousel products={products} />}
           </div>
 
           <div className="banner-bottom">

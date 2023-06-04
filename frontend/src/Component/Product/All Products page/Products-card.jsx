@@ -1,6 +1,5 @@
 import React from "react";
 import ReactStar from "react-rating-stars-component";
-import { useAlert } from "react-alert";
 import { Link } from "react-router-dom";
 
 function ProductCard({ product }) {

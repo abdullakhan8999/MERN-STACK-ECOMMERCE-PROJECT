@@ -1,10 +1,5 @@
 import React, { Fragment, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  clearErrors,
-  getProducts,
-  getProductDetails,
-} from "../../../actions/productAction";
 import { useParams } from "react-router-dom";
 import Loader from "../../Loader/Loader";
 import ReactStar from "react-rating-stars-component";
@@ -16,6 +11,12 @@ import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { CgTrack } from "react-icons/cg";
 import AddToCart from "./AddToCart";
 import RelatedProduct from "./RelatedProduct";
+import MetaData from "../../layout/MetaData";
+import {
+  clearErrors,
+  getProducts,
+  getProductDetails,
+} from "../../../actions/productAction";
 import "./ProductDetails.css";
 
 export default function ProductDetails() {
@@ -65,6 +66,7 @@ export default function ProductDetails() {
         <Loader />
       ) : (
         <Fragment>
+          <MetaData title={`${product.name} -- MaNa-Ecomm-Store`} />
           <div className="productDetails">
             <div className="productDetails-1">
               <ProductImage images={product.images} />

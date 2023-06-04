@@ -3,6 +3,7 @@ import { FiMenu } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import NavLogo from "../../../images/logo.png";
+import { FaShoppingCart, FaUserCircle } from "react-icons/fa";
 import "./Navbar.css";
 
 function Navbar() {
@@ -74,6 +75,28 @@ function Navbar() {
                 to="/search"
               >
                 <FaSearch />
+              </Link>
+            </li>
+            <li className="nav-li">
+              <Link
+                onClick={() => {
+                  setMenuOpen(!isMenuOpen);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                to="/cart"
+              >
+                <FaShoppingCart />
+              </Link>
+            </li>
+            <li className="nav-li">
+              <Link
+                onClick={() => {
+                  setMenuOpen(!isMenuOpen);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                to="/login"
+              >
+                <FaUserCircle />
               </Link>
             </li>
           </ul>

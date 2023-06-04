@@ -1,17 +1,19 @@
+.products-page-wrapper {
+  width: 90%;
+  margin: auto;
+  grid-template-columns: 0.2fr 1fr;
+  display: grid;
+  min-height: 100vh;
+}
 .product-container {
-  /* width: 90%;
-  margin-inline: auto;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start; */
-
-  display: flex;
-  margin: 4vmax auto;
+  margin: auto;
   width: 80vw;
   flex-wrap: wrap;
   justify-content: center;
   max-width: 100%;
+  margin-top: 1vmax;
+  margin-bottom: 1vmax;
 }
 .productsCard {
   width: 14vmax;
@@ -142,7 +144,7 @@
   margin-inline: auto;
   width: 30vw;
   border-bottom: 1px solid rgba(0, 0, 0, 0.171);
-  padding: 2vmax;
+  padding: 1vmax;
   color: rgba(0, 0, 0, 0.678);
   font: 500 1.5vmax "Roboto";
   text-align: center;
@@ -150,9 +152,42 @@
 
 .filterBox {
   width: 10vmax;
-  position: absolute;
+  margin-top: 8vmax;
+
+  /* position: relative;
   top: 10vmax;
-  left: 4vmax;
+  left: 4vmax; */
+}
+.products-page-category-filter {
+  display: flex;
+  margin-bottom: 20px;
+  flex-direction: column;
+}
+
+.products-page-category-filter label {
+  margin-right: 10px;
+  white-space: nowrap;
+  font-weight: 500;
+  font-family: "Roboto";
+}
+
+.categoryBox {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.category-link {
+  font-size: 14px;
+}
+
+.products-page-star-filter {
+  border: 1px solid rgba(0, 0, 0, 0.406);
+  padding-bottom: 0;
+}
+.star-filter {
+  white-space: nowrap;
+  font-size: 1vmax;
 }
 
 /*
@@ -161,6 +196,10 @@
 
  */
 @media screen and (max-width: 768px) {
+  .products-page-wrapper {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
   .productsCard > p {
     font-size: 1.7vmax;
   }
@@ -203,11 +242,24 @@
     padding-bottom: 2px;
   }
   .filterBox {
-    width: 20vmax;
+    width: 100%;
     margin: auto;
-    position: static;
+    display: flex;
+    margin-top: 8vmax;
+    justify-content: center;
+    background: aliceblue;
+    align-items: flex-start;
+    padding-top: 6px;
+  }
+  .filterBox > div {
+    width: 18vmax;
+    margin-right: 2vmax;
+  }
+  .products-page-price-filter {
+  }
+  .products-page-category-filter {
   }
   .page-link {
-    font-size: 1.7vmax;
+    /* font-size: 1.7vmax; */
   }
 }

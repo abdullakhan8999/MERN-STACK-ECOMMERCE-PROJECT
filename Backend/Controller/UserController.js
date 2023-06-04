@@ -277,10 +277,9 @@ exports.UpdateUserPassword = catchAsyncError(async (req, res, next) => {
   ) {
     return next(
       new ErrorHandler(
-        `Please enter ${
-          !req.body.oldPassword
-            ? "old"
-            : !req.body.newPassword
+        `Please enter ${!req.body.oldPassword
+          ? "old"
+          : !req.body.newPassword
             ? "new"
             : "confirm"
         } Password.`,
@@ -392,14 +391,13 @@ exports.UpdateUserRole = catchAsyncError(async (req, res, next) => {
   if (!req.body.name || !req.body.email || !req.body.role || !req.params.id) {
     return next(
       new ErrorHandler(
-        `Please enter ${
-          !req.body.name
-            ? "name"
-            : !req.body.email
+        `Please enter ${!req.body.name
+          ? "name"
+          : !req.body.email
             ? "email"
             : !req.body.role
-            ? "role"
-            : "user id"
+              ? "role"
+              : "user id"
         }!`,
         400
       )
